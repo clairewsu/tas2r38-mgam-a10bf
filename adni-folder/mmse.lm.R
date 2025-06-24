@@ -1,0 +1,6 @@
+library(lmerTest)
+gtmmse<-read.csv(file="gtmmse.csv")
+m=lmer(MMSCORE~PTGENDER_name+PTEDUCAT_name+age*(g1+g2+g3)+apoe4+(1|RID),data=gtmmse)
+capture.output(summary(m), file="mmse.lm.output.txt")
+m=lmer(MMSCORE~PTGENDER_name+PTEDUCAT_name+age+(g1+g2+g3)+apoe4+(1|RID),data=gtmmse)
+capture.output(summary(m), file="mmse.lm.output.txt",append=T)
